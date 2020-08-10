@@ -42,7 +42,7 @@ class Bank
 
   def linestatement(line)
     index = @activity.find_index(line)
-    "#{line[:date]} || #{line[:credit]} || #{line[:debit]} || #{line[:rolling_balance]}"
+    "#{line[:date]} || #{line[:debit]} || #{line[:credit]} || #{line[:rolling_balance]}"
   end
 
 end
