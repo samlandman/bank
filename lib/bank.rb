@@ -5,7 +5,7 @@ class Bank
     @rolling_balance = 0
   end
 
-  def deposit(credit, date = Time.now)
+  def deposit(credit, date = Time.now.strftime("%d/%m/%Y"))
     updatebalance(credit)
     updateactivity(credit,0,date)
   end
