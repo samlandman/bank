@@ -15,22 +15,18 @@ class Bank
   def balance
     sum = 0
     @activity.each { |x| sum = (sum + x[:credit] + x[:debit]) }
-    sum
+    return sum
   end
 
-  def statement(index)
+  def statement
     result = [header]
-    line = @activity[index]
-    result.push("#{line[:date]} || #{line[:credit]} || #{line[:debit]} || #{balance[index]}")
-    result.each do |x|
-      p x
-    end
+    line = @activity[0]
+    result.push("#{line[:date]} || #{line[:credit]} || #{line[:debit]} || #{balance}")
+    result.map {|x| p x}
   end
 
   def header
     "date || credit || debit || balance"
   end
-
-  
 
 end
