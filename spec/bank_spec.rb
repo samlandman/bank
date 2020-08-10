@@ -16,4 +16,9 @@ describe 'Bank' do
     @bank.withdraw(1)
     expect(@bank.balance).to eq(1)
   end
+
+  it 'recognises the method withdraw' do
+    @bank.deposit(2,"14/01/2012")
+    expect(@bank.statement(0)).to eq(["date || credit || debit || balance", "14/01/2012 || 0 || 2 || 0"])
+  end
 end
