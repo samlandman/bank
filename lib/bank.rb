@@ -2,35 +2,47 @@ class Bank
 
   def initialize
     @activity = []
+    @rolling_balance = 0
   end
 
   def deposit(amount, date = Time.now)
-    @activity.push({:date => date, :debit => amount, :credit => 0})
+    @rolling_balance += amount
+    @activity.push({:date => date, :debit => amount, :credit => 0, :rolling_balance => @rolling_balance})
   end
 
   def withdraw(amount, date = Time.now)
-    @activity.push({:date => date, :debit => 0, :credit => -amount})
-  end
-
-  def balance
-    sum = 0
-    @activity.each { |x| sum = (sum + x[:credit] + x[:debit]) }
-    return sum
+    @rolling_balance -= amount
+    @activity.push({:date => date, :debit => 0, :credit => amount, :rolling_balance => @rolling_balance})
   end
 
   def statement
-    result = [header]
-    line = @activity[0]
-    result.push(linestatement(line))
-    result.map {|x| p x}
+    result = []
+    @activity.each do |line|
+      result.push(linestatement(line))
+    end
+    result.push(header)
+    result.reverse.map {|x| x}
   end
+
+  def balance(lines = @activity.length)
+    sum = 0
+
+    @activity.each do |x|
+      sum = sum - x[:credit] + x[:debit]
+    end
+
+    return sum
+  end
+
+  private
 
   def header
     "date || credit || debit || balance"
   end
 
   def linestatement(line)
-    "#{line[:date]} || #{line[:credit]} || #{line[:debit]} || #{balance}"
+    index = @activity.find_index(line)
+    "#{line[:date]} || #{line[:credit]} || #{line[:debit]} || #{line[:rolling_balance]}"
   end
 
 end
