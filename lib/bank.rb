@@ -5,14 +5,14 @@ class Bank
     @rolling_balance = 0
   end
 
-  def deposit(amount, date = Time.now)
-    updatebalance(amount)
-    @activity.push({:date => date, :debit => amount, :credit => 0, :rolling_balance => @rolling_balance})
+  def deposit(credit, date = Time.now)
+    updatebalance(credit)
+    updateactivity(credit,0,date)
   end
 
-  def withdraw(amount, date = Time.now)
-    updatebalance(-amount)
-    @activity.push({:date => date, :debit => 0, :credit => amount, :rolling_balance => @rolling_balance})
+  def withdraw(debit, date = Time.now)
+    updatebalance(-debit)
+    updateactivity(0,debit,date)
   end
 
   def statement
@@ -28,7 +28,7 @@ class Bank
     sum = 0
 
     @activity.each do |x|
-      sum = sum - x[:credit] + x[:debit]
+      sum = sum - x[:debit] + x[:credit]
     end
 
     return twodecimalplaces(sum)
@@ -42,7 +42,14 @@ class Bank
 
   def linestatement(line)
     index = @activity.find_index(line)
-    "#{line[:date]} || #{twodecimalplaces(line[:debit])} || #{twodecimalplaces(line[:credit])} || #{twodecimalplaces(line[:rolling_balance])}"
+
+    if line[:rolling_balance] == 0
+      rolling_balance = "0.00"
+      else
+      rolling_balance = twodecimalplaces(line[:rolling_balance])
+    end
+
+    "#{line[:date]} || #{twodecimalplaces(line[:credit])} || #{twodecimalplaces(line[:debit])} || #{rolling_balance}"
   end
 
   def twodecimalplaces(integer)
@@ -53,6 +60,10 @@ class Bank
 
   def updatebalance(amount)
     @rolling_balance += amount
+  end
+
+  def updateactivity(credit,debit,date)
+    @activity.push({:date => date, :credit => credit, :debit => debit, :rolling_balance => @rolling_balance})
   end
 
 end
