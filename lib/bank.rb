@@ -6,12 +6,12 @@ class Bank
   end
 
   def deposit(amount, date = Time.now)
-    @rolling_balance += amount
+    updatebalance(amount)
     @activity.push({:date => date, :debit => amount, :credit => 0, :rolling_balance => @rolling_balance})
   end
 
   def withdraw(amount, date = Time.now)
-    @rolling_balance -= amount
+    updatebalance(-amount)
     @activity.push({:date => date, :debit => 0, :credit => amount, :rolling_balance => @rolling_balance})
   end
 
@@ -49,6 +49,10 @@ class Bank
     if integer > 0 
       return ('%.2f' % integer)
     end
+  end
+
+  def updatebalance(amount)
+    @rolling_balance += amount
   end
 
 end
