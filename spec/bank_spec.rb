@@ -21,20 +21,20 @@ describe 'Bank' do
 
   it 'recognises the method withdraw, and returns a statement' do
     @bank.deposit(2,"14/01/2012")
-    expect(@bank.statement).to eq(["date || credit || debit || balance", "14/01/2012 || 2 || 0 || 2"])
+    expect(@bank.statement).to eq(["date || credit || debit || balance", "14/01/2012 || 2.00 ||  || 2.00"])
   end
 
   it 'recognises the method withdraw, deposit and returns a statement' do
     @bank.deposit(2,"14/01/2012")
     @bank.withdraw(1,"15/01/2012")
-    expect(@bank.statement).to eq(["date || credit || debit || balance","15/01/2012 || 0 || 1 || 1","14/01/2012 || 2 || 0 || 2"])
+    expect(@bank.statement).to eq(["date || credit || debit || balance","15/01/2012 ||  || 1.00 || 1.00","14/01/2012 || 2.00 ||  || 2.00"])
   end
 
   it 'recognises the method withdraw, deposit and returns a statement' do
     @bank.deposit(1000,"10/01/2012")
     @bank.deposit(2000,"13/01/2012")
     @bank.withdraw(500,"14/01/2012")
-    expect(@bank.statement).to eq(["date || credit || debit || balance","14/01/2012 || 0 || 500 || 2500","13/01/2012 || 2000 || 0 || 3000","10/01/2012 || 1000 || 0 || 1000"])
+    expect(@bank.statement).to eq(["date || credit || debit || balance","14/01/2012 ||  || 500.00 || 2500.00","13/01/2012 || 2000.00 ||  || 3000.00","10/01/2012 || 1000.00 ||  || 1000.00"])
   end
 
 end

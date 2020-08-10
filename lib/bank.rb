@@ -42,11 +42,13 @@ class Bank
 
   def linestatement(line)
     index = @activity.find_index(line)
-    "#{line[:date]} || #{line[:debit]} || #{line[:credit]} || #{line[:rolling_balance]}"
+    "#{line[:date]} || #{twodecimalplaces(line[:debit])} || #{twodecimalplaces(line[:credit])} || #{twodecimalplaces(line[:rolling_balance])}"
   end
 
   def twodecimalplaces(integer)
-    return ('%.2f' % integer)
+    if integer > 0 
+      return ('%.2f' % integer)
+    end
   end
 
 end
