@@ -31,7 +31,7 @@ class Bank
       sum = sum - x[:credit] + x[:debit]
     end
 
-    return sum
+    return twodecimalplaces(sum)
   end
 
   private
@@ -43,6 +43,10 @@ class Bank
   def linestatement(line)
     index = @activity.find_index(line)
     "#{line[:date]} || #{line[:debit]} || #{line[:credit]} || #{line[:rolling_balance]}"
+  end
+
+  def twodecimalplaces(integer)
+    return ('%.2f' % integer)
   end
 
 end

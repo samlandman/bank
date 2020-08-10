@@ -10,13 +10,13 @@ describe 'Bank' do
 
   it 'recognises the method deposit, and returns a balance' do
     @bank.deposit(1)
-    expect(@bank.balance).to eq(1)
+    expect(@bank.balance).to eq("1.00")
   end
 
   it 'recognises the method withdraw and returns the correct balance' do
     @bank.deposit(2)
     @bank.withdraw(1)
-    expect(@bank.balance).to eq(1)
+    expect(@bank.balance).to eq("1.00")
   end
 
   it 'recognises the method withdraw, and returns a statement' do
