@@ -1,7 +1,5 @@
 require 'bank'
 
-
-
 describe 'Bank' do
 
   before(:each) do
