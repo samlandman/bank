@@ -21,12 +21,16 @@ class Bank
   def statement
     result = [header]
     line = @activity[0]
-    result.push("#{line[:date]} || #{line[:credit]} || #{line[:debit]} || #{balance}")
+    result.push(linestatement(line))
     result.map {|x| p x}
   end
 
   def header
     "date || credit || debit || balance"
+  end
+
+  def linestatement(line)
+    "#{line[:date]} || #{line[:credit]} || #{line[:debit]} || #{balance}"
   end
 
 end
