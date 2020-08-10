@@ -1,14 +1,19 @@
 require 'bank'
 
+
+
 describe 'Bank' do
+  before(:each) do
+    @bank = Bank.new
+  end
   it 'recognises the method deposit' do
-    Bank.deposit(1)
-    expect(Bank.balance).to eq(1)
+    @bank.deposit(1)
+    expect(@bank.balance).to eq(1)
   end
 
   it 'recognises the method withdraw' do
-    Bank.deposit(2)
-    Bank.withdraw(1)
-    expect(Bank.balance).to eq(1)
+    @bank.deposit(2)
+    @bank.withdraw(1)
+    expect(@bank.balance).to eq(1)
   end
 end

@@ -1,13 +1,29 @@
 class Bank
 
-  def self.deposit(amount)
+  def initialize
+    @activity = []
   end
 
-  def self.withdraw(amount)
+  def deposit(amount)
+    @activity.push(amount)
+    p @activity
   end
 
-  def self.balance
-    1
+  def withdraw(amount)
+    @activity.push(-amount)
+    p @activity
   end
+
+  def statement
+    ''
+  end
+
+  def balance
+    sum = 0
+    @activity.each { |x| sum+=x}
+    p sum
+  end
+
+  
 
 end
