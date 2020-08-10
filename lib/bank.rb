@@ -6,13 +6,13 @@ class Bank
   end
 
   def deposit(credit, date = Time.now.strftime("%d/%m/%Y"))
-    protection(credit)
+    guard(credit)
     updatebalance(credit)
     updateactivity(credit,0,date)
   end
 
   def withdraw(debit, date = Time.now)
-    protection(-debit)
+    guard(-debit)
     updatebalance(-debit)
     updateactivity(0,debit,date)
   end
@@ -68,7 +68,7 @@ class Bank
     @activity.push({:date => date, :credit => credit, :debit => debit, :rolling_balance => @rolling_balance})
   end
 
-  def protection(input)
+  def guard(input)
     fail unless input > 0
   end
 
