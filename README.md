@@ -1,4 +1,4 @@
-<h1 align="center"> # Bank Tech Test </h1>
+<h1 align="center"> Bank Tech Test </h1>
 
 <p align="center">
     <a href="https://makers.tech/">
