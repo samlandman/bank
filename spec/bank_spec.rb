@@ -28,6 +28,10 @@ describe 'Bank' do
   end
 
   it 'recognises the method withdraw with a date, and returns a statement' do
+    expect(@bank.statement).to eq(["date || credit || debit || balance"])
+  end
+
+  it 'recognises the method withdraw with a date, and returns a statement' do
     @bank.deposit(2,"14/01/2012")
     expect(@bank.statement).to eq(["date || credit || debit || balance", "14/01/2012 || 2.00 ||  || 2.00"])
   end
