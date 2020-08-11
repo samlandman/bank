@@ -11,25 +11,15 @@ class Printer
 
   def self.linestatement(line, activity)
     index = activity.find_index(line)
-    rolling_balance1(activity,index)
-
-    if line[:rolling_balance] == 0
-      rolling_balance = "0.00"
-      else
-      rolling_balance = rolling_balance1(activity,index)
-    end
-
-    "#{line[:date]} || #{twodecimalplaces(line[:credit])} || #{twodecimalplaces(line[:debit])} || #{rolling_balance}"
+    "#{line[:date]} || #{twodecimalplaces(line[:credit])} || #{twodecimalplaces(line[:debit])} || #{rolling_balance1(activity,index)}"
   end
 
   def self.rolling_balance1(activity, index)
     sum = 0
-
     (0..index).map do |int|
       sum += activity[int][:credit]-activity[int][:debit]
     end
-
-    twodecimalplaces(sum)
+    sum == 0 ? '0.00' : twodecimalplaces(sum)
   end
 
   def self.header
@@ -38,7 +28,7 @@ class Printer
 
   def self.twodecimalplaces(integer)
     if integer > 0 
-      return ('%.2f' % integer)
+      '%.2f' % integer
     end
   end
 
