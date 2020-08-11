@@ -23,22 +23,12 @@ class Printer
   end
 
   def self.rolling_balance1(activity, index)
-    
     sum = 0
-    i = 0
-    loop do
-      p index
-      p activity[i]
-      p activity[i][:credit]-activity[i][:debit]
-      p "sum: #{sum}"
-      sum += activity[i][:credit]-activity[i][:debit]
-      p "rolling balance: #{sum}"
-      if i >= index - 1 
-        break 
-      else
-        i += 1
-      end
+
+    (0..index).map do |int|
+      sum += activity[int][:credit]-activity[int][:debit]
     end
+
     twodecimalplaces(sum)
   end
 
