@@ -19,16 +19,7 @@ class Bank
   end
 
   def statement(activity = @activity, printer = Printer)
-    result = []
-    @activity.each do |line|
-      result.push(linestatement(line))
-    end
-    result.push(header)
-    result.reverse.map {|x| x}
-  end
-
-  def statement1(activity = @activity, printer = Printer)
-    
+    printer.statement(activity)
   end
 
   def balance(lines = @activity.length)
@@ -42,22 +33,6 @@ class Bank
   end
 
   private
-
-  def header
-    "date || credit || debit || balance"
-  end
-
-  def linestatement(line)
-    index = @activity.find_index(line)
-
-    if line[:rolling_balance] == 0
-      rolling_balance = "0.00"
-      else
-      rolling_balance = twodecimalplaces(line[:rolling_balance])
-    end
-
-    "#{line[:date]} || #{twodecimalplaces(line[:credit])} || #{twodecimalplaces(line[:debit])} || #{rolling_balance}"
-  end
 
   def twodecimalplaces(integer)
     if integer > 0 
