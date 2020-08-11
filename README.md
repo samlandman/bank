@@ -1,7 +1,7 @@
 <h1 align="center"> # Bank Tech Test </h1>
 
 <p align="center">
-    <a href="https://https://makers.tech/">
+    <a href="https://makers.tech/">
         <img src="https://img.shields.io/badge/-created%40makers-red"
             alt="Made @ Makers"></a>
 </p>
