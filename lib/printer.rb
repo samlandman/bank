@@ -9,12 +9,14 @@ class Printer
     result.reverse.map {|i| i}
   end
 
+  private
+
   def self.linestatement(line, activity)
     index = activity.find_index(line)
-    "#{line[:date]} || #{twodecimalplaces(line[:credit])} || #{twodecimalplaces(line[:debit])} || #{rolling_balance1(activity,index)}"
+    "#{line[:date]} || #{twodecimalplaces(line[:credit])} || #{twodecimalplaces(line[:debit])} || #{rolling_balance(activity,index)}"
   end
 
-  def self.rolling_balance1(activity, index)
+  def self.rolling_balance(activity, index)
     sum = 0
     (0..index).map do |int|
       sum += activity[int][:credit]-activity[int][:debit]
