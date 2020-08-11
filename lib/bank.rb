@@ -18,13 +18,17 @@ class Bank
     updateactivity(0,debit,date)
   end
 
-  def statement
+  def statement(activity = @activity, printer = Printer)
     result = []
     @activity.each do |line|
       result.push(linestatement(line))
     end
     result.push(header)
     result.reverse.map {|x| x}
+  end
+
+  def statement1(activity = @activity, printer = Printer)
+    
   end
 
   def balance(lines = @activity.length)
