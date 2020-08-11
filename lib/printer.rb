@@ -25,7 +25,7 @@ class Printer
   end
 
   def self.header
-    "date || credit || debit || balance"
+    'date || credit || debit || balance'
   end
 
   def self.twodecimalplaces(integer)

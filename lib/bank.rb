@@ -5,17 +5,17 @@ class Bank
     @rolling_balance = 0
   end
 
-  def deposit(credit, date = Time.now.strftime("%d/%m/%Y"))
+  def deposit(credit, date = Time.now.strftime('%d/%m/%Y'))
     guard(credit)
     updatebalance(credit)
-    updateactivity(credit,0,date)
+    updateactivity(credit, 0, date)
   end
 
   def withdraw(debit, date = Time.now)
     guard(debit)
     guardfunds(debit)
     updatebalance(-debit)
-    updateactivity(0,debit,date)
+    updateactivity(0, debit, date)
   end
 
   def statement(activity = @activity, printer = Printer)
