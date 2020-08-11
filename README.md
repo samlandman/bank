@@ -1,4 +1,10 @@
-# Bank Tech Test
+<h1 align="center"> # Bank Tech Test </h1>
+
+<p align="center">
+    <a href="https://https://makers.tech/">
+        <img src="https://img.shields.io/badge/-created%40makers-red"
+            alt="Made @ Makers"></a>
+</p>
 
 As part of Week10 of Makers Course, I have been challenged with creating a Bank which works in Ruby. The aim is to practice our OO design and TDD skills using a methodical approach.
 
