@@ -12,7 +12,7 @@ class Bank
   end
 
   def withdraw(debit, date = Time.now)
-    guard(-debit)
+    guard(debit)
     updatebalance(-debit)
     updateactivity(0,debit,date)
   end
@@ -33,7 +33,7 @@ class Bank
       sum = sum - x[:debit] + x[:credit]
     end
 
-    return twodecimalplaces(sum)
+    sum == 0 ? '0.00' : twodecimalplaces(sum)
   end
 
   private

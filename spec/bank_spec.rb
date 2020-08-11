@@ -11,6 +11,16 @@ describe 'Bank' do
     expect(@bank.balance).to eq("1.00")
   end
 
+  it 'expects bank balance to be £0 on initialize' do
+    expect(@bank.balance).to eq("0.00")
+  end
+
+  it 'recognises the method withdraw and returns the correct balance' do
+    @bank.deposit(2)
+    @bank.withdraw(2)
+    expect(@bank.balance).to eq("0.00")
+  end
+
   it 'recognises the method withdraw and returns the correct balance' do
     @bank.deposit(2)
     @bank.withdraw(1)
