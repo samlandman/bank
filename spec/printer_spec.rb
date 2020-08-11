@@ -6,12 +6,12 @@ describe 'Printer' do
   end
 
   it 'prints an empty line when no statements' do
-    expect(Printer.statement).to eq(["date || credit || debit || balance"])
+    expect(Printer.statement).to eq(['date || credit || debit || balance'])
   end
 
   it 'returns a printed line when provided with a hash' do
-    input = [{:date => "14/01/2012", :credit => 2, :debit => 0}]
-    expect(Printer.statement(input)).to eq(["date || credit || debit || balance","14/01/2012 || 2.00 ||  || 2.00"])
+    input = [{ :date => '14/01/2012', :credit => 2, :debit => 0 }]
+    expect(Printer.statement(input)).to eq(['date || credit || debit || balance', '14/01/2012 || 2.00 ||  || 2.00'])
   end
   
 

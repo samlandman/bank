@@ -6,14 +6,14 @@ class Printer
       result.push(linestatement(line, activity))
     end
     result.push(header)
-    result.reverse.map {|i| i}
+    result.reverse.map { |i| i }
   end
 
   private
 
   def self.linestatement(line, activity)
     index = activity.find_index(line)
-    "#{line[:date]} || #{twodecimalplaces(line[:credit])} || #{twodecimalplaces(line[:debit])} || #{rolling_balance(activity,index)}"
+    "#{ line[:date] } || #{ twodecimalplaces(line[:credit]) } || #{ twodecimalplaces(line[:debit]) } || #{ rolling_balance(activity,index) }"
   end
 
   def self.rolling_balance(activity, index)
