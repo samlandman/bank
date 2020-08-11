@@ -13,6 +13,7 @@ class Bank
 
   def withdraw(debit, date = Time.now)
     guard(debit)
+    guardfunds(debit)
     updatebalance(-debit)
     updateactivity(0,debit,date)
   end
@@ -69,7 +70,11 @@ class Bank
   end
 
   def guard(input)
-    fail unless input > 0
+    input.to_i <= 0 ? raise('Error, please try again') : true #to_i method catches any string, as to_i on string returns 0
+  end
+
+  def guardfunds(input)
+    fail 'Insufficient Funds' if (@rolling_balance - input < 0)
   end
 
 end
