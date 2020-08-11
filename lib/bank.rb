@@ -45,7 +45,7 @@ class Bank
   end
 
   def updateactivity(credit,debit,date)
-    @activity.push({:date => date, :credit => credit, :debit => debit, :rolling_balance => @rolling_balance})
+    @activity.push({:date => date, :credit => credit, :debit => debit})
   end
 
   def guard(input)
