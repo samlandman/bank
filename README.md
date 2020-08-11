@@ -73,11 +73,11 @@ The last part of the approach was to focus on edge cases, guarding against an ov
 
 For clarity, I decided to use a singe class approach. This can be seen as follows:
 
-![image1](https://github.com/samlandman/banktechtest/images/img1.png)
+![image1](https://github.com/samlandman/bank/blob/master/images/img1.png)
 
 Having achieved a working model, I then decided to remove the printing from the class to achieve SRP. 
 
-![image2](https://github.com/samlandman/Makersbnb/blob/master/public/images/Screen%20Shot%202020-07-13%20at%2015.00.00%202.png)
+![image2](https://github.com/samlandman/bank/blob/master/images/img2.png)
 
 A third class could have been used to store the information relating to each piece of activity, but I decided that a hash within the bank class was a suitable step given the relative simplicity of the stored information. At a later date, if required, it would be easy to retrospectively turn the hash into its own separate class and test it independently as a unit. 
 
