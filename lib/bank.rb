@@ -1,3 +1,5 @@
+require './lib/printer.rb'
+
 class Bank
 
   def initialize

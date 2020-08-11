@@ -6,7 +6,7 @@ class Printer
       result.push(linestatement(line, activity))
     end
     result.push(header)
-    result.reverse.map { |i| i }
+    result.reverse.map { |i| p i }
   end
 
   private
